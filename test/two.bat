@@ -1,0 +1,1 @@
+scrap.py -s COM -i C:\Users\ylim\Documents\LYZ\notes.txt

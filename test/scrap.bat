@@ -1,0 +1,1 @@
+scrap.py -s COM -i com.txt

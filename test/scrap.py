@@ -1,3 +1,14 @@
+'''
+RoboR works
+
+Task:
+    - Change it to a class
+    - scrap_word() scrap_word_BeEnd() change to onlly a single function, and use
+    a Switch case, add an argument to check
+    - Add remaining scrap_word case
+
+'''
+
 import sys, getopt
 import os.path
 import re
@@ -59,7 +70,7 @@ def check_file():
 
 
 def scrap_file():
-    print "Scrapping....."
+    #print "Scrapping....."
     fp = open(rFile, "r")
     
     for line in fp:
@@ -78,8 +89,7 @@ def scrap_line(line):
                 if (rString != ""):
                     scrap_word(word)
                 elif (rStrBegin != "" and rStrEnd != ""):
-                    #scrap_word(word)
-                    print "Begin and the End"
+                    scrap_word_BeEnd(word)
                 elif (rStrBegin != ""):
                     #scrap_word(word)
                     print "It is the beginning"
@@ -88,11 +98,22 @@ def scrap_line(line):
                     print "THE END"
                     
                 word = ""
-        
-        
+
+
 def scrap_word(word):
     if (re.search(rString, word)):
         print word
+
+def scrap_word_BeEnd(word):
+    global rStrBegin
+    global rStrEnd
+    
+    regex = "(" + rStrBegin + "\S*?)"+ rStrEnd    
+    match = re.search(regex, word)
+    
+    if (match):
+        print match.group(1)
+
 
 
 
